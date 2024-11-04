@@ -8,7 +8,7 @@ Created on Thu Oct  3 16:53:44 2024
 class Case: 
     
     def __init__(self, ligne, colonne, decouv = False, drap = False):
-        """Création d'une case définie par sa ligne et sa colonne, paramètre découvert = False par défault"""
+        """Création d'une case définie par sa ligne et sa colonne, un paramètre de découverte par défault False, et un paramètre drapeau aussi initié à False"""
         
         self.ligne = ligne
         self.colonne = colonne
@@ -23,17 +23,17 @@ class Case:
   
         
     def decouverte(self):
-        """Rend la case visible à l'utilisateur après l'initialisation de la grille, un clique ou une case vide entourée"""
+        """Rend la case visible à l'affichange de la grille"""
         
         self.decouv = True
         
     def drapeau(self):
-        """Rend la case visible à l'utilisateur après l'initialisation de la grille, un clique ou une case vide entourée"""
+        """Pour poser un drapeau sur la case: permettre l'affichage d'un D sur la grille de jeu"""
         
         self.drap = True
         
     def remove_d(self):
-        """Rend la case visible à l'utilisateur après l'initialisation de la grille, un clique ou une case vide entourée"""
+        """Pour retirer un drapeau"""
         
         self.drap = False
         

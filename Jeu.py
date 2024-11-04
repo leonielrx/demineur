@@ -27,22 +27,23 @@ def remove_drapeau(grille, ligne, colonne):
     grille.cases[ligne, colonne].remove_d()
     
     
-
+###Pour lancer le jeu, entrer Play() dans la console###
 class Play():
     
     def __init__(self):
+        """Initialisation du Jeu"""
         
         self.fini = False
         niv = input("Quel niveau ?")
         niv = int(niv)
         
-        grille_jeu = Grille(niv)
+        grille_jeu = g.Grille(niv)
         grille_jeu.gen_grille_jeu()
         grille_jeu.afficher()
         
         while not self.fini:
 #        for i in range(5):
-            choice = input ("Cliquer une case ou posez un drapeau") #répondre C pour cliquer ou D pour mettre un drapeau; R retirer
+            choice = input ("Cliquer une case ou poser un drapeau (C: pour cliquer, D: poser un drapeau, R: retirer un drapeau)") #répondre C pour cliquer ou D pour mettre un drapeau; R retirer
             
             
             if choice == "C": 

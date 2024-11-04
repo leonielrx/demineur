@@ -10,17 +10,14 @@ import Case
 class CaseVide(Case.Case):
     
     def __init__(self, ligne, colonne, value, decouv = False, drap = False):
-        """Constructeur des cases bombes: héritage et même attribut que la classe Case 
-        avec ajout de la valeur de la case qui dépend du nombre de bombe adjacent"""
+        """Constructeur des cases videss: héritage et même attribut que la classe Case 
+        avec ajout de la valeur de la case qui dépend du nombre de bombes adjacentes"""
         # Appel du constructeur de la classe parente
         super().__init__(ligne, colonne, decouv, drap)
         self.value = value
         
     def __str__(self): 
-        """Fonction d'affichage de la case"""
+        """Fonction d'affichage de la case: affichange de sa valeur"""
         
         return str(self.value)      
         
-###TEST####
-#caseV = CaseVide(1,2,1)
-#print(caseV)        

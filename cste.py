@@ -5,6 +5,8 @@ Created on Thu Oct  3 14:58:52 2024
 @author: Formation
 """
 
+###Fichier de constante qui gère les différents niveaux###
+
 niv_case = {
     0: 4,
     1: 10,

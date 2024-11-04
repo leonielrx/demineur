@@ -19,9 +19,4 @@ class CaseBombe(Case.Case):
 
         return "B"    
         
-#    def exploser(self): 
-        
-####TEST####   
-#bombe = CaseBombe(1,1)
-#print(bombe)
         

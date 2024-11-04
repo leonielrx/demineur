@@ -15,7 +15,7 @@ import Case_vide as cv
 class Grille:
     
     def __init__(self, niveau):
-        """Initialise la grille avec un niveau spécifié, limité à 1 (facile), 2 (moyen), 3 (difficile)."""
+        """Initialise la grille avec un niveau spécifié (argument obligatoire); initialisation d'une grille vide"""
         
         if niveau not in [0, 1, 2, 3]:
             raise ValueError("Le niveau doit être 0, 1 (facile), 2 (moyen), 3 (difficile).")
@@ -23,40 +23,23 @@ class Grille:
         
         self.cases = np.empty((cste.niv_case[self.niveau], cste.niv_case[self.niveau]), dtype=object)  # Crée un tableau numpy vide de cases
 
-        # Remplissage de la grille avec des objets Case
+        # Remplissage de la grille avec des objets Case: on remplit les cases de l'objet grille avec des objets Case (composition)
         for ligne in range(cste.niv_case[self.niveau]):
             for colonne in range(cste.niv_case[self.niveau]):
                 self.cases[ligne, colonne] = Case.Case(ligne, colonne)
                 
-#    def afficher(self):
-#        """affichage de la grille sous a forme d'une matrice"""
-#
-#        for ligne in self.cases:
-#            l = []
-#            for case in ligne:  # Utilise "case" pour itérer à travers les cases
-#                if case.decouv:  # Vérifie si la case est découverte
-#                    l.append(case.__str__())
-#                    
-#                elif case.drap:
-#                    l.append("D")
-#                    
-#                else : 
-#                    l.append("*")
-#                    
-#            print(l)
+                
     def afficher(self):
-        """Affichage de la grille sous la forme d'une matrice."""
+        """Affichage de la grille de jeu"""
         
         for ligne in self.cases:
             l = []  # Liste pour stocker la représentation de la ligne
             for case in ligne:  # Utilise "case" pour itérer à travers les cases
                 if case.decouv:  # Vérifie si la case est découverte
-                l.append(case.__str__())  # Ajoute la représentation de la case
+                    l.append(case.__str__())  # Ajoute la représentation de la case
                 
                 elif case.drap:  # Vérifie si le drapeau est posé
                     l.append("D")  # Ajoute "D" pour une case avec un drapeau
-                    
-                
                 
                 else: 
                     l.append("*")  # Ajoute "*" pour une case non découverte et sans drapeau
@@ -68,7 +51,7 @@ class Grille:
     def gen_grille_jeu(self):
         """génération de la grille de jeu lorsque l'utilisateur clique pour jouer"""
         
-        # 1- Remplissage des bombres
+        # 1- Remplissage des bombes
         # 1-A Générer des indices aléatoires qui seront les indices des bombes
         pp = [(i,j) for i in range (cste.niv_case[self.niveau]) for j in range (cste.niv_case[self.niveau])]
         bombes = random.sample(pp, cste.niv_bombe[self.niveau])
@@ -86,7 +69,7 @@ class Grille:
                 
                 #2-B si ce n'est pas une case bombe
                 else:
-                    #2-C Compter les bombes adjacentes pour avec une value pour constuire une case vide
+                    #2-C Compter les bombes adjacentes pour avoir une value et constuire une case vide
                     compteur = 0
                     
                     for dir in cste.directions:
@@ -103,7 +86,7 @@ class Grille:
 
         #3- Découvrir quelques cases pour que le joueur commence à jouer
         #on prend une case au hasard qui sera découverte ainsi que quelques cases autour
-        #boucle: pour éviter de tomber sur une case bombe dès la première découverte 
+        #boucle avec test: pour éviter de tomber sur une case bombe dès la première découverte 
         for i in range (10): 
             pc = random.sample(pp, 1)
         
@@ -124,10 +107,6 @@ class Grille:
                             self.cases[vl, vc].decouverte()
                             
             break                             
-
-
-
-
 
 
 # Exemple d'utilisation
