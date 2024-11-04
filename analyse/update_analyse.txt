@@ -1,0 +1,17 @@
+Update de l'analyse informatique: 
+
+En réalisant le code du démineur, je n'ai pas exactement suivi les diagrammes produits lors de l'analyse informatique. 
+J'ai en effet simplifié la structure du jeu, tout en modifiant/supprimant certaines classes car je n'avais pas pensé à toute la partie affichage pendant l'analyse.
+
+Diagramme de classe: 
+-suppression de la classe Drapeau: le drapeau n'est plus un objet, mais un attribut de la classe Case.
+Cela permet de faciliter l'affichage de la grille: l'objet grille est composé d'objets cases, et l'affichage de la grille passe par l'affichage d'un attribut de la case.
+Si j'avais gardé la classe drapeau, j'aurais du créer un autre objet, à superposer sur l'objet case. 
+
+-suppression de la classe Niveau: le niveau est un attribut de la grille, nécessaire pour l'initialiser
+
+-supression de la classe Chronomètre: simplification du jeu
+
+-la classe Case regroupe les méthodes des classe CaseVide et CaseBombe: ces deux classes filles n'ont pas de méthodes particulières
+
+-ajout de l'ensemble des méthodes d'affichage
